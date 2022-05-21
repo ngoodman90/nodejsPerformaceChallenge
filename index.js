@@ -17,8 +17,8 @@ const requestListener = function (req, res) {
     case '/card_add':
       res.writeHead(200);
       client.incr(reqUrl.query.id)
-        .then(response => response < cardListLength ?
-          res.end(cardList[response]) :
+        .then(response => response <= cardListLength ?
+          res.end(cardList[response - 1]) :
           res.end(allCardsResponse));
       break
     case '/ready':
